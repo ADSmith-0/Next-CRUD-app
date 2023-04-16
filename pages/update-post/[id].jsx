@@ -118,7 +118,7 @@ export default function UpdatePost({ postData }) {
                     Submit
                 </Button>
             </form>
-            <Alert visible={successAlertVisible} setVisible={setSuccessAlertVisible}>Post created!</Alert>
+            <Alert visible={successAlertVisible} setVisible={setSuccessAlertVisible}>Post updated!</Alert>
             <Alert visible={errorAlertVisible} setVisible={setErrorAlertVisible} severity="error">Something went wrong please try again</Alert>
         </div>
     )
