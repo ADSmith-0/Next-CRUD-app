@@ -15,11 +15,10 @@ export default function CustomAlert({ visible, setVisible, severity, position, v
     return (
         visible ?
             <Alert 
-                className={position === "fixed" ? style.fixed : ""}
                 severity={severity || "success"}
                 onClose={() => setVisible(false)}
                 variant={variant || ""}
-
+                className={position === "fixed" ? style.fixed : ""}
             >
                 { children }
             </Alert>

@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useRouter } from "next/router";
 
-// could be getStaticProps, depending on how frequently
+// could be getStaticProps, depending on how frequently data is updated
 export async function getServerSideProps(context){
     const { id } = context.params;
     const response = await fetch(`http://localhost:3000/api/get-posts/${id}`);

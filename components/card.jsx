@@ -11,7 +11,7 @@ export default function CustomCard({ id, userId, title, body, passDeletedBack })
     }
 
     const handleEdit = e => {
-
+        router.push(`/update-post/${id}`);
     }
 
     const handleDelete = async (e) => {

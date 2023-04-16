@@ -1,8 +1,8 @@
 import { Button, TextField } from "@mui/material";
-import Alert from '../components/alert';
-import { useEffect, useState } from 'react';
+import Alert from '../../components/alert';
+import { useState } from 'react';
 import { postJSON } from "@/lib/fetch";
-import style from "../styles/add-post.module.css";
+import style from "../../styles/add-update-post.module.css";
 
 export default function AddPost() {
     const [ userId, setUserId ] = useState("");
@@ -46,9 +46,9 @@ export default function AddPost() {
                     variant="outlined"
                     inputProps={{
                         inputMode: "numeric",
-                        pattern: "[0-9]{1}",
+                        pattern: "[0-9]+",
                         required: true,
-                        title: "Must be a number < 10"
+                        title: "Must be a number"
                     }}
                     value={userId}
                     onInput={(e) => setUserId(e.target.value)}
