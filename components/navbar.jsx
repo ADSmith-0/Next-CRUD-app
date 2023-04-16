@@ -21,6 +21,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ArticleIcon from '@mui/icons-material/Article';
 import Link from 'next/link';
+import style from '../styles/navbar.module.css';
 
 import { toTitleCase } from '@/lib/util';
 
@@ -157,7 +158,7 @@ export default function Navbar({ children }) {
                 <Divider />
                 <List>
                     {menuOptions.map(({ text, icon, link }, index) => (
-                        <Link key={index} href={link}>
+                        <Link key={index} href={link} className={style.link}>
                             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
                                 <ListItemButton
                                     sx={{

@@ -1,5 +1,5 @@
 import { Button, Typography } from "@mui/material";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useRouter } from "next/router";
 
 // could be getStaticProps, depending on how frequently
@@ -25,7 +25,7 @@ export default function Post({ postData }) {
     return (
         <>
             {/* Ideally this would be a link but idk how to style it like MUI button as a link */}
-            <Button startIcon={<ArrowBackIcon />} onClick={handleClick}>Posts</Button>
+            <Button startIcon={<ChevronLeftIcon />} onClick={handleClick}>Posts</Button>
             <Typography variant="h1" gutterBottom sx={{ fontSize: "4em" }}>
                 {title}
             </Typography>

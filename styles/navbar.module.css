@@ -1,0 +1,6 @@
+.link {
+    text-decoration: none;
+}
+.link:visited {
+    color: #212121;
+}
