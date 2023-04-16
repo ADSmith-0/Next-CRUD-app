@@ -1,4 +1,5 @@
-import { Alert, Button, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+import Alert from '../components/alert';
 import { useEffect, useState } from 'react';
 import { postJSON } from "@/lib/fetch";
 import style from "../styles/add-post.module.css";
@@ -17,16 +18,6 @@ export default function AddPost() {
         setTitle("");
         setBody("");
     }
-
-    useEffect(() => {
-        const timeout = setTimeout(() => setSuccessAlertVisible(false), 5000);
-        return () => clearTimeout(timeout);
-    }, [ successAlertVisible ]);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => setErrorAlertVisible(false), 5000);
-        return () => clearTimeout(timeout);
-    }, [ errorAlertVisible ]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -97,14 +88,8 @@ export default function AddPost() {
                     Submit
                 </Button>
             </form>
-            {
-                successAlertVisible &&
-                <Alert onClose={() => setSuccessAlertVisible(false)}>Post added!</Alert>
-            }
-            {
-                errorAlertVisible &&
-                <Alert severity="error" onClose={() => setErrorAlertVisible(false)}>Something went wrong please try again</Alert>
-            }
+            <Alert visible={successAlertVisible} setVisible={setSuccessAlertVisible}>Post created!</Alert>
+            <Alert visible={errorAlertVisible} setVisible={setErrorAlertVisible} severity="error">Something went wrong please try again</Alert>
         </div>
     )
 }

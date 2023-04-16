@@ -3,16 +3,34 @@ import { grey } from '@mui/material/colors';
 import style from '../styles/card.module.css';
 import { useRouter } from 'next/router';
 
-export default function CustomCard({ id, userId, title, body }) {
+export default function CustomCard({ id, userId, title, body, passDeletedBack }) {
     const router = useRouter();
 
-    const handleClick = e => {
+    const handlePostClick = e => {
         router.push(`/posts/${id}`);
+    }
+
+    const handleEdit = e => {
+
+    }
+
+    const handleDelete = async (e) => {
+        try{
+            // add a modal with confirmation before deletion
+            const response = await fetch(`/api/delete-post/${id}`);
+            if(response.ok){
+                passDeletedBack(id);
+            }else{
+                console.error(response);
+            }
+        }catch(e){
+            throw e;
+        }
     }
 
     return (
       <Card key={id} className={style.card}>
-        <CardActionArea className={style.actionArea} onClick={handleClick}>
+        <CardActionArea className={style.actionArea} onClick={handlePostClick}>
             <CardContent className={style.cardContent}>
                 <Typography gutterBottom variant="h5" component="div">
                     {title}
@@ -26,8 +44,8 @@ export default function CustomCard({ id, userId, title, body }) {
             </CardContent>
         </CardActionArea>
         <CardActions>
-            <Button size="small">Edit</Button>
-            <Button size="small" color="error">Delete</Button>
+            <Button size="small" onClick={handleEdit}>Edit</Button>
+            <Button size="small" color="error" onClick={handleDelete}>Delete</Button>
         </CardActions>
       </Card>
     )
