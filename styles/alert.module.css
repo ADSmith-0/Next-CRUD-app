@@ -1,7 +1,6 @@
 .fixed {
     position: fixed;
     bottom: 2em;
-    /* left: 38vw; */
     width: 50%;
     left: 25%;
 }
