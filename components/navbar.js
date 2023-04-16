@@ -22,7 +22,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ArticleIcon from '@mui/icons-material/Article';
 import Link from 'next/link';
 
-import { toTitleCase } from '@/util';
+import { toTitleCase } from '@/lib/util';
 
 const drawerWidth = 240;
 
