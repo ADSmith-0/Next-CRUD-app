@@ -121,7 +121,7 @@ export default function Navbar({ children }) {
         if(!pathname || pathname === "/"){
             return "";
         }
-        const normalisedPathname = pathname.replace(/-/, " ").replace(/\//, "");
+        const normalisedPathname = pathname.slice(1).replace(/-|\//g, " ");
         // normally would append to string.prototype, but not sure of ramifications in next
         return toTitleCase(normalisedPathname);
     }
