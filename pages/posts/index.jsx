@@ -23,9 +23,14 @@ export default function Posts({ postsData }) {
     const [ deletedId, setDeletedId ] = useState(0);
 
 
-    const handleDelete = id => {
+    const handleDelete = async (id) => {
         setDeletedId(id);
         setDeletedAlertVisible(true);
+
+        // refresh data, could be done with caching instead
+        const response = await fetch("/api/get-posts");
+        const data = await response.json();
+        setPosts(data);
     }
 
     return (
