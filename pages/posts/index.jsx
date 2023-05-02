@@ -2,10 +2,10 @@ import { useState } from "react";
 import Alert from '../../components/alert';
 import Card from '../../components/card';
 import style from '../../styles/posts.module.css';
+import { getPosts } from "@/lib/api";
 
 export async function getServerSideProps(context){
-    const response = await fetch('http://localhost:3000/api/get-posts');
-    const posts = await response.json();
+    const posts = await getPosts();
 
     return {
         props: {

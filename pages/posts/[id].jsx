@@ -1,15 +1,15 @@
 import { Button, Typography } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useRouter } from "next/router";
+import { getPosts } from "@/lib/api";
 
 // could be getStaticProps, depending on how frequently data is updated
 export async function getServerSideProps(context){
     const { id } = context.params;
-    const response = await fetch(`http://localhost:3000/api/get-posts/${id}`);
-    const data = await response.json();
+    const post = await getPosts(id);
     return {
         props: {
-            postData: data
+            postData: post
         }
     }
 }
@@ -18,9 +18,7 @@ export default function Post({ postData }) {
     const { title, body } = postData;
     const router = useRouter();
 
-    const handleClick = e => {
-        router.push("/posts");
-    }
+    const handleClick = e => router.push("/posts");
 
     return (
         <>

@@ -1,17 +1,17 @@
 import { Button, TextField } from "@mui/material";
 import Alert from '../../components/alert';
 import { useState } from 'react';
-import { putJSON} from "@/lib/fetch";
 import style from "../../styles/add-update-post.module.css";
+import { getPosts } from "@/lib/api";
 
 export async function getServerSideProps(context) {
     try{
         const { id } = context.params;
-        const response = await fetch(`http://localhost:3000/api/get-posts/${id}`);
-        const data = await response.json();
+        const post = await getPosts(id);
+        
         return {
             props: {
-                postData: data
+                postData: post
             }
         }
     }catch(e){

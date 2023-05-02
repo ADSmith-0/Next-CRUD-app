@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import Alert from '../../components/alert';
 import { useState } from 'react';
-import { postJSON } from "@/lib/fetch";
+import { createPost } from "@/lib/api";
 import style from "../../styles/add-update-post.module.css";
 
 export default function AddPost() {
@@ -23,7 +23,7 @@ export default function AddPost() {
         e.preventDefault();
 
         try {
-            const response = await postJSON("/api/create-post", { userId, title, body });
+            const response = await createPost({ userId, title, body });
             if(response.ok){
                 resetFields();
                 setSuccessAlertVisible(true);
